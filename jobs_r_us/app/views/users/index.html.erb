@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Users</h1>
+<h1>Listing Users</h1>
+​
+<%= form_tag users_path, method: :get do %>
+<div>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name %>
+</div>
+<div>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name %>
+</div>
+<p>
+  <%= submit_tag 'Search' %>
+</p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Dob</th>
+      <th>Dead</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.dob %></td>
+      <td><%= user.dead %></td>
+      <td><%= link_to 'Show', user %></td>
+      <td><%= link_to 'Edit', edit_user_path(user) %></td>
+      <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+<br>
+<%= will_paginate @posts, :style => 'color:blue' %>
+<hr>
+<br>
+
+<%= link_to 'New User', new_user_path %>

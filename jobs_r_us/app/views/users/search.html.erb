@@ -1,0 +1,14 @@
+<h1>User Search form</h1>
+<%= form_tag search_users_path do %>
+<div>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name %>
+</div>
+<div>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name %>
+</div>
+<p>
+  <%= submit_tag 'Search' %>
+</p>
+<% end %>
